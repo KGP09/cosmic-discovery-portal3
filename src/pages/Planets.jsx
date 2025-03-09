@@ -7,7 +7,7 @@ import BackgroundStars from '../components/BackgroundStars';
 import LoadingSpinner from '../components/LoadingSpinner';
 import GlassCard from '../components/GlassCard';
 import { Info } from 'lucide-react';
-import Input from '../components/ui/Input';
+import Input from '../components/ui/input';
 
 const planetImages = {
   mercury: 'https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=400&h=400&fit=crop',
