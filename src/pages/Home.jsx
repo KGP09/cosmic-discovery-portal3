@@ -40,7 +40,7 @@ const Home = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center max-w-4xl mx-auto mb-12"
         >
-          <h1 className="text-4xl md:text-6xl font-display tracking-tight mb-6">
+          <h1 className="text-3xl md:text-5xl font-display mb-6">
             <span className="text-white">Explore The</span> <span className="text-blue-900">Cosmos</span>
           </h1>
           <p className="text-lg text-gray-400 md:text-xl mb-8 leading-relaxed">

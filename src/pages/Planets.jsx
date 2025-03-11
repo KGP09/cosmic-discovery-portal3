@@ -57,8 +57,8 @@ const Planets = () => {
       <BackgroundStars />
       <div className="max-w-6xl mx-auto px-4">
         
-        <motion.h1 className="text-white text-4xl text-center md:text-6xl font-display" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>Explore Our Solar System</motion.h1>
-        <motion.p className="text-gray-400 text-lg text-center text-muted-foreground mb-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        <motion.h1 className="text-white text-3xl text-center md:text-5xl font-display mb-5" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>Explore Our Solar System</motion.h1>
+        <motion.p className="text-gray-400 text-lg text-center mb-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           Discover the planets that orbit our Sun, from the rocky inner worlds to the gas giants of the outer system.
         </motion.p>
         <motion.div
