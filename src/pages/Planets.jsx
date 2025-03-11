@@ -48,33 +48,48 @@ const Planets = () => {
     }
   });
 
+  const formatDistanceFromSun = (distance) => {
+    return `${(distance / 149597870.7).toFixed(2)} AU`;
+  };
+
   return (
-    <div className="relative min-h-screen bg-space-gradient pt-24 pb-16 px-4">
+    <div className="relative min-h-screen pt-24 pb-16 px-4">
       <BackgroundStars />
-      <div className="container mx-auto max-w-6xl">
+      <div className="max-w-6xl mx-auto px-4">
+        
         <motion.h1 className="text-white text-4xl text-center md:text-6xl font-display" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>Explore Our Solar System</motion.h1>
         <motion.p className="text-gray-400 text-lg text-center text-muted-foreground mb-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           Discover the planets that orbit our Sun, from the rocky inner worlds to the gas giants of the outer system.
         </motion.p>
-        
-          <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4 md:gap-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-8 flex flex-col md:flex-row justify-between gap-4"
+        >
+          <div className="relative w-full md:w-64">
             <Input
-              className="text-gray-400 bg-background border border-gray-600 rounded-full gap-2 px-6 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300 ease-in-out hover:bg-amber-50/10 hover:border-primary"
               type="text"
               placeholder="Search planets..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-3 py-2 bg-gray-900 text-white border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <span className="text-sm text-gray-500">Sort by:</span>
             <select
               value={selectedSort}
               onChange={(e) => setSelectedSort(e.target.value)}
-              className="text-gray-600 bg-background border border-gray-600 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300 ease-in-out hover:bg-amber-50/10"
+              className="bg-gray-900 text-white border border-gray-400 rounded-md px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="name">Name</option>
               <option value="distance">Distance from Sun</option>
               <option value="size">Size</option>
             </select>
           </div>
+        </motion.div>
 
 
         {isLoading ? <LoadingSpinner /> : isError ? <p>Error loading planets</p> : (
@@ -82,14 +97,36 @@ const Planets = () => {
             {sortedPlanets?.map((planet) => (
               <motion.div key={planet.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <Link to={`/planets/${planet.id}`}>
-                  <GlassCard className="h-full">
-                    <img src={planetImages[planet.id.toLowerCase()] || 'default_image_url'} alt={planet.englishName} className="w-full h-48 object-cover" />
-                    <h3 className="text-xl font-bold mt-4">{planet.englishName}</h3>
-                    <p>Distance: {planet.semimajorAxis.toFixed(2)} km</p>
-                    <p>Size: {planet.meanRadius.toFixed(2)} km</p>
-                    <p>Orbit Period: {planet.sideralOrbit.toFixed(2)} days</p>
-                    <div className="flex justify-end text-primary hover:underline text-sm">
-                      <Info className="h-4 w-4" /> View Details
+                  <GlassCard hoverable className="h-full">
+                    <div className="relative mb-4 overflow-hidden rounded-lg">
+                      <img 
+                        src={planetImages[planet.id.toLowerCase()] || `https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=400&h=400&fit=crop`}
+                        alt={planet.englishName}
+                        className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                        <h3 className="text-white text-xl font-bold">{planet.englishName}</h3>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-400">Distance from Sun:</span>
+                        <span className="font-medium text-white">{formatDistanceFromSun(planet.semimajorAxis)}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-400">Diameter:</span>
+                        <span className="font-medium text-white">{(planet.meanRadius * 2).toLocaleString()} km</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-gray-400">Orbit Period:</span>
+                        <span className="font-medium text-white">{planet.sideralOrbit.toFixed(2)} days</span>
+                      </div>
+                      <div className="mt-4 flex justify-end">
+                        <div className="inline-flex items-center gap-1 text-blue-500 hover:underline text-sm">
+                          <Info className="h-4 w-4" /> View Details
+                        </div>
+                      </div>
                     </div>
                   </GlassCard>
                 </Link>
