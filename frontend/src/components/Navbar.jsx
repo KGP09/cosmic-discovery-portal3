@@ -48,6 +48,7 @@ const Navbar = () => {
     { name: "Planets", path: "/planets" },
     { name: "Missions", path: "/missions" },
     { name: "Space3D", path: "/space3D" },
+    { name: "Solar System 3D", path: "/solar-system-3d" },
     { name: "Satellites", path: "/satellites", icon: <Satellite className="h-4 w-4" /> },
   ];
 
