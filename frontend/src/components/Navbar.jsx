@@ -70,9 +70,9 @@ const Navbar = () => {
               key={link.path}
               to={link.path}
               className={cn(
-                "relative text-lg font-light transition-colors hover:text-blue-900 flex items-center gap-1",
-                "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full",
-                location.pathname === link.path ? "text-blue-900 after:w-full" : "text-white"
+                "relative text-md font-light transition-colors hover:text-blue-500 flex items-center gap-1",
+                "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-500 after:transition-all hover:after:w-full",
+                location.pathname === link.path ? "text-blue-500 after:w-full" : "text-white"
               )}
             >
               {link.icon && link.icon}
