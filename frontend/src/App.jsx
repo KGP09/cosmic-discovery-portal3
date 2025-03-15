@@ -10,6 +10,7 @@ import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from './contexts/ThemeContext';
 import SolarSystem from './components/SolarSystem';
 import Missions from './pages/Missions';
+import MissionDetail from './pages/MissionDetails';
 
 const queryClient = new QueryClient()
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/planets" element={<Planets />} />
         <Route path='/planets/:id' element={<PlanetDetails/>}/>
         <Route path="/missions" element={<Missions />} />
+        <Route path="/missions/:id" element={<MissionDetail />} />
         <Route path="/space-3d" element={<Space3D />} />
         <Route path="/solar-system-3d" element={<SolarSystem />} />
       </Routes>

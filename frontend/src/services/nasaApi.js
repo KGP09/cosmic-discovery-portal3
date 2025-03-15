@@ -92,6 +92,40 @@ const fetchMissions = async () => {
   }
 };
 
+export const fetchMissionDetails = async (missionId) => {
+  try {
+    const response = await fetch(`https://api.spacexdata.com/v4/launches/${missionId}`);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch details for mission: ${missionId}`);
+    }
+    
+    const launch = await response.json();
+    
+    return {
+      id: launch.id,
+      name: launch.name,
+      description: launch.details || "No description available",
+      status: launch.upcoming ? "Upcoming" : (launch.success ? "Successful" : "Failed"),
+      startDate: launch.date_utc,
+      endDate: undefined,
+      target: launch.rocket ? "Space" : "Unknown",
+      imageUrl: launch.links?.flickr?.original?.[0] || 
+                launch.links?.patch?.large || 
+                "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1470&auto=format&fit=crop",
+      details: launch.details,
+      success: launch.success,
+      upcoming: launch.upcoming,
+      flight_number: launch.flight_number,
+      rocket: launch.rocket,
+      links: launch.links
+    };
+  } catch (error) {
+    console.error(`Error fetching mission ${missionId}:`, error);
+    throw error;
+  }
+};
+
 // Function to fetch satellite data
 const fetchSatellites = async () => {
   try {
