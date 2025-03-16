@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, Target, Check, X, Clock } from 'lucide-react';
 import BackgroundStars from '../components/BackgroundStars';
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Button from '../components/ui/Button';
+import { Button } from '../components/ui/Button';
 import Input from '../components/ui/input';
 import { useToast } from '../hooks/use-toast';
 

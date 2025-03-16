@@ -5,8 +5,8 @@
 
 /* Custom Colors */
 :root {
-  --background: #0A192F; /* Example: set your background color */
-  --primary: #61DAFB;    /* Set your primary color */
+  --background: #020b18; 
+  --primary: #61DAFB; 
   --border: #2D68FF; 
   --input: #e2e2e2;
   --ring: #e2e2e2;
@@ -167,6 +167,16 @@
 .rounded-sm {
   border-radius: calc(var(--radius) - 4px);
 }
+
+/* .stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+} */
 
 body {
   background-color: var(--background);

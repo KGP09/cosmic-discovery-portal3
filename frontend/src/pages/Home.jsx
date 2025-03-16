@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Globe, Rocket, RefreshCw, ArrowRight } from "lucide-react";
-import Button from "../components/ui/Button";
+import { Button } from "../components/ui/Button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import BackgroundStars from "../components/BackgroundStars";

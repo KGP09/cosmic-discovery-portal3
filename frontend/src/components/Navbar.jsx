@@ -1,12 +1,13 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Menu, X, Satellite } from "lucide-react";
+import { Menu, X, Satellite, AlertTriangle } from "lucide-react";
 
 import { cn } from "../lib/utils";
 import ThemeToggle from "./ThemeToggle";
 import SearchBar from "./SearchBar";
 import UserMenu from "./Auth/UserMenu";
-import Button from "./ui/Button";
+import { Button } from "./ui/Button";
+
 
 const Navbar = () => {
   const location = useLocation();
@@ -47,7 +48,7 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "Planets", path: "/planets" },
     { name: "Missions", path: "/missions" },
-    { name: "Space3D", path: "/space3D" },
+    { name: 'Asteroids', path: '/asteroids', icon: <AlertTriangle className="h-4 w-4" /> },
     { name: "Solar System 3D", path: "/solar-system-3d" },
     { name: "Satellites", path: "/satellites", icon: <Satellite className="h-4 w-4" /> },
   ];
@@ -56,7 +57,7 @@ const Navbar = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "backdrop-blur-md py-2 bg-background/80 shadow-sm" : "py-4"
+        isScrolled ? "backdrop-blur-md py-2 bg-blue-950/80 shadow-sm" : "py-4"
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">

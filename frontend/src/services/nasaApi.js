@@ -227,12 +227,59 @@ const fetchSatelliteDetail = async (satelliteId) => {
   }
 };
 
+const fetchAsteroids = async (startDate, endDate) => {
+  try {
+    // If no dates are provided, use today and the next 7 days
+    const start = startDate || new Date().toISOString().split("T")[0];
+    let end = endDate;
+
+    if (!end) {
+      const endDateObj = new Date();
+      endDateObj.setDate(endDateObj.getDate() + 7);
+      end = endDateObj.toISOString().split("T")[0];
+    }
+
+    const response = await fetch(
+      `https://api.nasa.gov/neo/rest/v1/feed?start_date=${start}&end_date=${end}&api_key=${NASA_API_KEY}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch asteroid data");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching asteroids:", error);
+    throw error;
+  }
+};
+
+const fetchAsteroidDetails = async (asteroidId) => {
+  try {
+    const response = await fetch(
+      `https://api.nasa.gov/neo/rest/v1/neo/${asteroidId}?api_key=${NASA_API_KEY}`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch details for asteroid: ${asteroidId}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error(`Error fetching asteroid ${asteroidId}:`, error);
+    throw error;
+  }
+};
+
+
 export {
   fetchApod,
   fetchPlanets,
   fetchPlanetDetails,
   fetchMissions,
   fetchSatellites,
-  fetchSatelliteDetail
+  fetchSatelliteDetail,
+  fetchAsteroids,
+  fetchAsteroidDetails
 };
 
