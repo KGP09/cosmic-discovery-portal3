@@ -51,6 +51,7 @@ const Navbar = () => {
     { name: 'Asteroids', path: '/asteroids', icon: <AlertTriangle className="h-4 w-4" /> },
     { name: "Solar System 3D", path: "/solar-system-3d" },
     { name: "Satellites", path: "/satellites", icon: <Satellite className="h-4 w-4" /> },
+    { name: "Explore", path: "/explore"},
   ];
 
   return (
