@@ -130,12 +130,12 @@ const MissionDetail = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="lg:col-span-2"
               >
-                <GlassCard>
+                <GlassCard className="bg-gray-900/80 backdrop-blur-md border-gray-700" >
                   <h2 className="text-xl text-amber-50 font-bold mb-6">Mission Overview</h2>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <div className="border border-border bg-background/30 rounded-lg p-4">
-                      <div className="flex items-center gap-2 mb-2 text-primary">
+                    <div className="border border-border bg-blue-900/30 rounded-lg p-4">
+                      <div className="flex items-center gap-2 mb-2 text-blue-500">
                         <Calendar className="h-5 w-5" />
                         <span className="text-sm font-medium">Launch Date</span>
                       </div>
@@ -145,7 +145,7 @@ const MissionDetail = () => {
                     </div>
 
                     {mission.rocket && (
-                      <div className="border border-border bg-background/30 rounded-lg p-4">
+                      <div className="border border-border bg-blue-900/30 rounded-lg p-4">
                         <div className="flex items-center gap-2 mb-2 text-primary">
                           <Rocket className="h-5 w-5" />
                           <span className="text-sm font-medium">Rocket</span>
@@ -156,8 +156,8 @@ const MissionDetail = () => {
                       </div>
                     )}
 
-                    <div className="border border-border bg-background/30 rounded-lg p-4">
-                      <div className="flex items-center gap-2 mb-2 text-primary">
+                    <div className="border border-border bg-blue-900/30 rounded-lg p-4">
+                      <div className="flex items-center gap-2 mb-2 text-blue-500">
                         <Target className="h-5 w-5" />
                         <span className="text-sm font-medium">Target</span>
                       </div>
@@ -184,7 +184,7 @@ const MissionDetail = () => {
                               href={mission.links.webcast} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-3 py-2 rounded-md text-sm hover:bg-secondary/80 transition-colors"
+                              className="inline-flex items-center gap-2 bg-blue-900/10 text-secondary-foreground px-3 py-2 rounded-md text-sm hover:bg-secondary/80 transition-colors"
                             >
                               <Youtube className="h-4 w-4" />
                               Watch Webcast
@@ -195,7 +195,7 @@ const MissionDetail = () => {
                               href={mission.links.article} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-3 py-2 rounded-md text-sm hover:bg-secondary/80 transition-colors"
+                              className="inline-flex items-center gap-2 bg-blue-900/10 text-secondary-foreground px-3 py-2 rounded-md text-sm hover:bg-secondary/80 transition-colors"
                             >
                               <Link2 className="h-4 w-4" />
                               Read Article
@@ -206,7 +206,7 @@ const MissionDetail = () => {
                               href={mission.links.wikipedia} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-3 py-2 rounded-md text-sm hover:bg-secondary/80 transition-colors"
+                              className="inline-flex items-center gap-2 bg-blue-900/10 text-secondary-foreground px-3 py-2 rounded-md text-sm hover:bg-secondary/80 transition-colors"
                             >
                               <Globe className="h-4 w-4" />
                               Wikipedia
