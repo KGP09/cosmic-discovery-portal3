@@ -12,7 +12,7 @@ import Input from '../components/ui/input';
 const planetImages = {
   mercury: 'https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=400&h=400&fit=crop',
   venus: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=400&h=400&fit=crop',
-  earth: 'https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=400&h=400&fit=crop',
+  earth: 'https://climatekids.nasa.gov/why-earth/earth.jpg',
   mars: 'https://images.unsplash.com/photo-1545156521-77bd85671d30?w=400&h=400&fit=crop',
   jupiter: 'https://images.unsplash.com/photo-1630839437035-dac17da580d0?w=400&h=400&fit=crop',
   saturn: 'https://images.unsplash.com/photo-1614314107768-6018061e5444?w=400&h=400&fit=crop',
