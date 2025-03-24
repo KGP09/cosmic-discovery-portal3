@@ -9,9 +9,9 @@ import { ArrowLeft, Globe, Thermometer, Calendar, Ruler, Waves, Scale } from 'lu
 
 // Updated planet images with more distinctive and accurate representations
 const planetImages = {
-  'mercury': 'https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=800&fit=crop',
+  'mercury': 'https://science.nasa.gov/wp-content/uploads/2023/05/earth-1-jpg.webp',
   'venus': 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&fit=crop', 
-  'earth': 'https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=800&fit=crop',
+  'earth': 'https://climatekids.nasa.gov/why-earth/earth.jpg',
   'mars': 'https://images.unsplash.com/photo-1545156521-77bd85671d30?w=800&fit=crop',
   'jupiter': 'https://images.unsplash.com/photo-1630839437035-dac17da580d0?w=800&fit=crop',
   'saturn': 'https://images.unsplash.com/photo-1614314107768-6018061e5444?w=800&fit=crop',
@@ -69,16 +69,16 @@ const PlanetDetails = () => {
   ] : [];
 
   return (
-    <div className="relative min-h-screen bg-space-gradient pt-24 pb-16 px-4">
+    <div className="relative min-h-screen pt-24 pb-16 px-4">
       <BackgroundStars />
-      <div className="container mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <Link to="/planets" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/planets" className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-500 transition-colors">
             <ArrowLeft className="h-4 w-4" />
             Back to Planets
           </Link>
@@ -90,10 +90,10 @@ const PlanetDetails = () => {
           </div>
         ) : isError ? (
           <GlassCard className="text-center py-12">
-            <p className="text-destructive mb-4">Failed to load planet data</p>
+            <p className="text-red-700 mb-4">Failed to load planet data</p>
             <button 
               onClick={() => window.location.reload()}
-              className="px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              className="px-4 py-2 rounded-md bg-blue-500 text-primary-foreground hover:bg-blue-500/90 transition-colors"
             >
               Try Again
             </button>
@@ -106,8 +106,8 @@ const PlanetDetails = () => {
               transition={{ duration: 0.6 }}
               className="mb-8"
             >
-              <h1 className="text-4xl md:text-5xl font-display mb-2">{planet.englishName}</h1>
-              <p className="text-lg text-muted-foreground">
+              <h1 className="text-4xl text-amber-50 md:text-5xl font-display mb-2">{planet.englishName}</h1>
+              <p className="text-lg text-gray-500">
                 {planet.bodyType.charAt(0).toUpperCase() + planet.bodyType.slice(1)}
               </p>
             </motion.div>
@@ -137,19 +137,19 @@ const PlanetDetails = () => {
                 className="lg:col-span-2"
               >
                 <GlassCard>
-                  <h2 className="text-xl font-bold mb-6">Planet Overview</h2>
+                  <h2 className="text-xl text-amber-50 font-bold mb-6">Planet Overview</h2>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                     {planetStats.map((stat, index) => (
                       <div 
                         key={index} 
-                        className="border border-border bg-background/30 rounded-lg p-4"
+                        className="border border-border bg-blue-900/10 rounded-lg p-4"
                       >
-                        <div className="flex items-center gap-2 mb-2 text-primary">
+                        <div className="flex items-center gap-2 mb-2 text-blue-500">
                           {stat.icon}
                           <span className="text-sm font-medium">{stat.label}</span>
                         </div>
-                        <div className="text-lg font-semibold">
+                        <div className="text-lg text-amber-50 font-semibold">
                           {stat.value}
                         </div>
                       </div>
@@ -159,21 +159,21 @@ const PlanetDetails = () => {
                   <div className="space-y-4">
                     {planet.moons && planet.moons.length > 0 && (
                       <div>
-                        <h3 className="text-lg font-semibold mb-2">Moons</h3>
-                        <p className="text-muted-foreground mb-2">
+                        <h3 className="text-lg text-amber-50 font-semibold mb-2">Moons</h3>
+                        <p className="text-muted-foreground text-gray-400 mb-2">
                           {planet.englishName} has {planet.moons.length} {planet.moons.length === 1 ? 'moon' : 'moons'}.
                         </p>
                         <div className="flex flex-wrap gap-2">
                           {planet.moons.slice(0, 12).map((moon, index) => (
                             <span 
                               key={index} 
-                              className="bg-secondary px-3 py-1 rounded-full text-sm"
+                              className="bg-blue-900/10 px-3 py-1 rounded-full text-amber-50 text-sm"
                             >
                               {moon.moon.replace(` ${planet.id}`, '')}
                             </span>
                           ))}
                           {planet.moons.length > 12 && (
-                            <span className="bg-secondary px-3 py-1 rounded-full text-sm">
+                            <span className="bg-blue-900/10 px-3 py-1 rounded-full text-sm">
                               +{planet.moons.length - 12} more
                             </span>
                           )}
@@ -182,13 +182,13 @@ const PlanetDetails = () => {
                     )}
                     
                     <div>
-                      <h3 className="text-lg font-semibold mb-2">Discovery</h3>
+                      <h3 className="text-lg text-amber-50 font-semibold mb-2">Discovery</h3>
                       {planet.discoveredBy ? (
-                        <p className="text-muted-foreground">
+                        <p className="text-muted-foreground text-gray-400">
                           Discovered by {planet.discoveredBy} {planet.discoveryDate && `on ${planet.discoveryDate}`}.
                         </p>
                       ) : (
-                        <p className="text-muted-foreground">
+                        <p className="text-muted-foreground text-gray-400">
                           Known since ancient times.
                         </p>
                       )}
@@ -197,7 +197,7 @@ const PlanetDetails = () => {
                     {planet.alternativeName && (
                       <div>
                         <h3 className="text-lg font-semibold mb-2">Alternative Names</h3>
-                        <p className="text-muted-foreground">{planet.alternativeName}</p>
+                        <p className="text-muted-foreground text-gray-400">{planet.alternativeName}</p>
                       </div>
                     )}
                   </div>
