@@ -1,10 +1,15 @@
 import { useState } from "react";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../store/useAuthStore";
 const UserMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const {logout} = useAuthStore()
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-
+  const navigate = useNavigate();
+  const hangleLogout = ()=>{
+      logout();
+      navigate('/');
+  }
   return (
     <div className="relative">
       <button
@@ -37,7 +42,7 @@ const UserMenu = () => {
             <li className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
               Settings
             </li>
-            <li className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+            <li onClick={hangleLogout}  className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
               Log Out
             </li>
           </ul>

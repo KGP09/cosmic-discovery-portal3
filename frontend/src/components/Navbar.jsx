@@ -7,9 +7,10 @@ import ThemeToggle from "./ThemeToggle";
 import SearchBar from "./SearchBar";
 import UserMenu from "./Auth/UserMenu";
 import { Button } from "./ui/Button";
-
+import { useAuthStore } from "../store/useAuthStore";
 
 const Navbar = () => {
+  const {authUser} = useAuthStore()
   const location = useLocation();
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -86,17 +87,25 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           <SearchBar placeholder="Search planets & missions..." onSearch={handleSearch} className="hidden md:flex" />
           <ThemeToggle />
-          <UserMenu />
-
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden rounded-full"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? <X className="h-5 w-5 animate-fade-in" /> : <Menu className="h-5 w-5 animate-fade-in" />}
-          </Button>
+          {
+            authUser ? 
+            <>
+              <UserMenu />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden rounded-full"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              >
+                {isMobileMenuOpen ? <X className="h-5 w-5 animate-fade-in" /> : <Menu className="h-5 w-5 animate-fade-in" />}
+              </Button>
+            </>
+            :
+            <Link to="/login" >
+              <Button >Login / SignUp</Button>
+            </Link>
+          }
         </div>
       </div>
 
