@@ -25,6 +25,7 @@ function App() {
     checkAuth()
   }, [checkAuth])
   console.log(authUser);
+  // adding 
   return (
     <QueryClientProvider client={queryClient}>
     <ThemeProvider>
